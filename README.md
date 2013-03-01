@@ -1,8 +1,8 @@
-Device Galaxy Y
+Device Galaxy Mini i
 ===============
 
-Device tree for Samsung Galaxy Y S5360 - CM7
+Device tree for Samsung Galaxy Mini i S5570i - CM7
 
-Maintainer: Hell_lock & Bieltv.3
+Maintainer: Bieltv.3
 
-Special Thanks: WhiteXP, Squadzone
+Special Thanks: Phiexz
