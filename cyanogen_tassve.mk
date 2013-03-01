@@ -20,11 +20,11 @@ PRODUCT_MODEL := GT-S5570i
 PRODUCT_MANUFACTURER := Samsung
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=GT-S5570i BUILD_ID=GRI40 BUILD_DISPLAY_ID=GWK74 BUILD_FINGERPRINT=samsung/GT-S5570i/GT-S5570i:2.3.6/GINGERBREAD/XWKTN:user/release-keys PRIVATE_BUILD_DESC="GT-S5570i-user 2.3.6 GINGERBREAD XWKTN release-keys"
 
-# Add LDPI assets, in addition to MDPI
-PRODUCT_LOCALES += ldpi mdpi
+# Add LDPI assets, in addition to LDPI
+PRODUCT_LOCALES += ldpi
 
 # Extra overlay for LDPI
-PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/mdpi
+PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
 
 # Copy bootanimation
 PRODUCT_COPY_FILES += \
