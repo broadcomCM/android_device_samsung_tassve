@@ -41,7 +41,7 @@ BOARD_LDPI_RECOVERY := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tassve/recovery/recovery_ui.c
 
 # Prebuilt kernel
-TARGET_PREBUILT_KERNEL := device/samsung/tassve/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/samsung/bcm21553-common/prebuilt/kernel
 
 ## Enable if you build a kernel, then disable the prebuilt kernel
 #TARGET_KERNEL_CONFIG := cyanogenmod_tassve_defconfig
