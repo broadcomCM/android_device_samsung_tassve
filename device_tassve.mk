@@ -12,22 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Call common.mk
+# Inherit products
 $(call inherit-product, device/samsung/bcm21553-common/common.mk)
-
-# Inherit from those products. Most specific first.
+$(call inherit-product, vendor/samsung/tassve/vendor_blobs.mk)
 $(call inherit-product, build/target/product/languages_full.mk)
 $(call inherit-product, build/target/product/full_base.mk)
 
 # Add device package overlay
 DEVICE_PACKAGE_OVERLAYS += device/samsung/tassve/overlay
-PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
+PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/mdpi
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-# Add LDPI assets, in addition to LDPI
+# Add LDPI assets
     PRODUCT_LOCALES += ldpi
+
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
 
 # Kernel modules
 PRODUCT_COPY_FILES += \
@@ -43,13 +46,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/tassve/ramdisk/ueventd.gt-s5570i.rc:root/ueventd.gt-s5570i.rc \
     device/samsung/tassve/ramdisk/init.gt-s5570i.rc:root/init.gt-s5570i.rc
 
-# Use the non-open-source parts, if they're present
--include vendor/samsung/tassve/BoardConfigVendor.mk
-
-# Bootanimation
-PRODUCT_COPY_FILES += \
-    vendor/cyanogen/prebuilt/ldpi/media/bootanimation.zip:system/media/bootanimation.zip
-
 # Other kernel modules not in ramdisk
 ifeq ($(TARGET_PREBUILT_KERNEL),)
     LOCAL_KERNEL := device/samsung/tassve/prebuilt/kernel
@@ -59,9 +55,3 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
-
-# See comment at the top of this file. This is where the other
-# half of the device-specific product definition file takes care
-# of the aspects that require proprietary drivers that aren't
-# commonly available
-$(call inherit-product-if-exists, vendor/samsung/tassve/tassve-vendor.mk)
