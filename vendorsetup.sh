@@ -21,4 +21,4 @@
 # function: add_lunch_combo generic-eng
 
 add_lunch_combo tassve-eng
-add_lunch_combo tassve_cooperve-userdebug
+add_lunch_combo generic_tassve-userdebug
