@@ -1,5 +1,5 @@
-Device Galaxy Mini i
-===================
+Device Galaxy Mini i - CyanogenMod 7.2
+======================================
 
 Device tree for Samsung Galaxy Mini i S5570i - CM7
 
