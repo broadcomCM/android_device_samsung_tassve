@@ -24,27 +24,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 # Add device package overlay
 DEVICE_PACKAGE_OVERLAYS += device/samsung/tassve/overlay
-PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/mdpi
+PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-# Add LDPI assets, in addition to MDPI
+# Add LDPI assets
     PRODUCT_LOCALES += ldpi
-
-# Kernel modules
-PRODUCT_COPY_FILES += \
-    device/samsung/tassve/prebuilt/root/fsr.ko:root/fsr.ko \
-    device/samsung/tassve/prebuilt/root/fsr_stl.ko:root/fsr_stl.ko \
-    device/samsung/tassve/prebuilt/root/rfs_fat.ko:root/rfs_fat.ko \
-    device/samsung/tassve/prebuilt/root/rfs_glue.ko:root/rfs_glue.ko \
-    device/samsung/tassve/prebuilt/root/j4fs.ko:root/j4fs.ko \
-    device/samsung/tassve/prebuilt/root/sec_param.ko:root/sec_param.ko
-
-# Board-specific init
-PRODUCT_COPY_FILES += \
-    device/samsung/tassve/ramdisk/init.rc:root/init.rc \
-    device/samsung/tassve/ramdisk/init.bcm21553.rc:root/init.bcm21553.rc
 
 # Prebuilt Kernel - DELETE from the package
 ifeq ($(TARGET_PREBUILT_KERNEL),)
