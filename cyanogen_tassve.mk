@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
      vendor/cyanogen/prebuilt/ldpi/media/bootanimation.zip:system/media/bootanimation.zip
 
 # Release name and versioning
-PRODUCT_RELEASE_NAME := GalaxyAcei
+PRODUCT_RELEASE_NAME := GalaxyMinii
 PRODUCT_VERSION_DEVICE_SPECIFIC :=
 -include vendor/cyanogen/products/common_versions.mk
 
