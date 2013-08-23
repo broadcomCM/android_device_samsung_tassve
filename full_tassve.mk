@@ -30,7 +30,7 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # Add LDPI assets
-    PRODUCT_LOCALES += ldpi
+    PRODUCT_LOCALES += ldpi mdpi
 
 # Prebuilt Kernel - DELETE from the package
 ifeq ($(TARGET_PREBUILT_KERNEL),)
