@@ -15,8 +15,12 @@
 # Inherit products
 $(call inherit-product, device/samsung/bcm21553-common/common.mk)
 $(call inherit-product, vendor/samsung/tassve/vendor_blobs.mk)
-$(call inherit-product, build/target/product/languages_full.mk)
-$(call inherit-product, build/target/product/full_base.mk)
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+# This is where we'd set a backup provider if we had one
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 # Add device package overlay
 DEVICE_PACKAGE_OVERLAYS += device/samsung/tassve/overlay
@@ -25,19 +29,20 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
+# Discard inherited values and use our own instead.
+PRODUCT_NAME := tassve
+PRODUCT_DEVICE := tassve
+PRODUCT_MODEL := GT-S5570I
+
 # Add LDPI assets
-    PRODUCT_LOCALES += ldpi
+    PRODUCT_LOCALES += ldpi mdpi
 
-# Kernel modules
-PRODUCT_COPY_FILES += \
-    device/samsung/tassve/prebuilt/root/fsr.ko:root/fsr.ko \
-    device/samsung/tassve/prebuilt/root/fsr_stl.ko:root/fsr_stl.ko \
-    device/samsung/tassve/prebuilt/root/rfs_fat.ko:root/rfs_fat.ko \
-    device/samsung/tassve/prebuilt/root/rfs_glue.ko:root/rfs_glue.ko \
-    device/samsung/tassve/prebuilt/root/j4fs.ko:root/j4fs.ko \
-    device/samsung/tassve/prebuilt/root/sec_param.ko:root/sec_param.ko
+# Prebuilt Kernel - DELETE from the package
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    LOCAL_KERNEL := device/samsung/tassve/prebuilt/kernel
+else
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
 
-# Board-specific init
 PRODUCT_COPY_FILES += \
-    device/samsung/tassve/ramdisk/ueventd.gt-s5570i.rc:root/ueventd.gt-s5570i.rc \
-    device/samsung/tassve/ramdisk/init.gt-s5570i.rc:root/init.gt-s5570i.rc
+    $(LOCAL_KERNEL):kernel
