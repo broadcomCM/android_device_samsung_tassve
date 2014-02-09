@@ -29,13 +29,13 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
+# Add MDPI assets, in addition to LDPI
+    PRODUCT_LOCALES += ldpi mdpi
+
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := tassve
 PRODUCT_DEVICE := tassve
-PRODUCT_MODEL := GT-S5570I
-
-# Add LDPI assets
-    PRODUCT_LOCALES += ldpi mdpi
+PRODUCT_MODEL := GT-S5570i
 
 # Prebuilt Kernel - DELETE from the package
 ifeq ($(TARGET_PREBUILT_KERNEL),)
