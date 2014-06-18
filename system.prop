@@ -2,9 +2,6 @@
 # system.prop for GT-S5570i
 #
 
-# Display
-ro.sf.lcd_density=120
-
 # View configuration for QVGA.
 view.fading_edge_length=8
 view.touch_slop=15
