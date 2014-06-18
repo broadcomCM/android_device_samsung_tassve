@@ -21,7 +21,7 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/tassve/overlay
 
 # Init files
 PRODUCT_COPY_FILES += \
-    device/samsung/tassve/ramdisk/init.tassve.sensors.rc:root/init.tassve.sensors.rc
+    device/samsung/tassve/ramdisk/init.gt-s5570iboard.sensors.rc:root/init.gt-s5570iboard.sensors.rc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -35,13 +35,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # LDPI assets
 PRODUCT_AAPT_CONFIG := normal mdpi ldpi
 PRODUCT_AAPT_PREF_CONFIG := ldpi
-
-# Prebuilt Kernel - DELETE from the package
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/samsung/tassve/prebuilt/kernel
-else
-    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel

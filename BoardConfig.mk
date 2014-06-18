@@ -17,6 +17,12 @@
 # Product-specific compile-time definitions.
 #
 
+# Import the bcm21553-common BoardConfigCommon.mk
+include device/samsung/bcm21553-common/BoardConfigCommon.mk
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR	:= device/samsung/tassve/bluetooth
+
 # Board
 TARGET_BOARD_PLATFORM := bcm21553
 TARGET_BOOTLOADER_BOARD_NAME := tassve
@@ -28,17 +34,10 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 241172480
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 206831616
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_LDPI_RECOVERY := true
+BOARD_USE_CUSTOM_RECOVERY_FONT	:= "<font_7x16.h>"
 
-# Prebuilt kernel NOTE: Delete from package
-TARGET_PREBUILT_KERNEL := device/samsung/tassve/prebuilt/kernel
+# Kernel config
+TARGET_KERNEL_CONFIG := cyanogenmod_tassve_defconfig
 
-# Kernel defines
-BOARD_KERNEL_BASE := 0x81600000
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_FORCE_RAMDISK_ADDRESS := 0x82600000
-#TARGET_KERNEL_CONFIG := cyanogenmod_tassve_defconfig
-
+# OTA Override
 TARGET_OTA_ASSERT_DEVICE := tassve,GT-S5570i,gt-s5570i
-
-# Import the bcm21553-common BoardConfigCommon.mk
-include device/samsung/bcm21553-common/BoardConfigCommon.mk
