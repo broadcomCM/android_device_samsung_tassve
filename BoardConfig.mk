@@ -35,6 +35,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 206831616
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_LDPI_RECOVERY := true
 BOARD_USE_CUSTOM_RECOVERY_FONT	:= "<font_7x16.h>"
+TARGET_RECOVERY_INITRC 			:= device/samsung/tassve/recovery/recovery.rc
 
 # Kernel config
 TARGET_KERNEL_CONFIG := cyanogenmod_tassve_defconfig
