@@ -19,10 +19,6 @@ $(call inherit-product, vendor/samsung/tassve/vendor.mk)
 # Add device package overlay
 DEVICE_PACKAGE_OVERLAYS += device/samsung/tassve/overlay
 
-# Init files
-PRODUCT_COPY_FILES += \
-    device/samsung/tassve/ramdisk/init.gt-s5570iboard.sensors.rc:root/init.gt-s5570iboard.sensors.rc
-
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml
