@@ -22,7 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_small.mk)
 $(call inherit-product, vendor/cyanogen/products/gsm.mk)
 
 # BootAnimation
-PRODUCT_COPY_FILES +=  \
+PRODUCT_COPY_FILES += \
     vendor/cyanogen/prebuilt/ldpi/media/bootanimation.zip:system/media/bootanimation.zip
 
 # Inherit device configuration for tassve
