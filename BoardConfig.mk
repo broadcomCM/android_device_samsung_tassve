@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2009 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +17,24 @@
 # Product-specific compile-time definitions.
 #
 
-LOCAL_PATH:= $(call my-dir)
-
+# Import the bcm21553-common BoardConfigCommon.mk
 include device/samsung/bcm21553-common/BoardConfigCommon.mk
 
 # Board
-TARGET_BOARD_PLATFORM 				:= bcm21553
-TARGET_BOOTLOADER_BOARD_NAME 			:= tassve
-
-# Kernel
-#TARGET_KERNEL_CONFIG				:= cyanogenmod_tassve_defconfig
-TARGET_PREBUILT_KERNEL				:= device/samsung/tassve/prebuilt/kernel
-BOARD_KERNEL_BASE				:= 0x81600000
-BOARD_KERNEL_PAGESIZE				:= 4096
-BOARD_NAND_PAGE_SIZE				:= 4096 -s 128
-BOARD_PAGE_SIZE					:= 0x00001000
+TARGET_BOARD_PLATFORM				:= bcm21553
+TARGET_BOOTLOADER_BOARD_NAME			:= tassve
 
 # Recovery
-BOARD_LDPI_RECOVERY				:= true
-BOARD_CUSTOM_RECOVERY_KEYMAPPING		:= ../../device/samsung/tassve/recovery/recovery_ui.c
-BOARD_CUSTOM_GRAPHICS				:= ../../../device/samsung/tassve/recovery/graphics.c
-TARGET_RECOVERY_FSTAB				:= device/samsung/tassve/recovery.fstab
+BOARD_BOOTIMAGE_PARTITION_SIZE			:= 7357568
+BOARD_RECOVERYIMAGE_PARTITION_SIZE		:= 7357568
+BOARD_SYSTEMIMAGE_PARTITION_SIZE		:= 241172480
+BOARD_USERDATAIMAGE_PARTITION_SIZE		:= 206831616
+BOARD_FLASH_BLOCK_SIZE				:= 131072
+BOARD_USE_CUSTOM_RECOVERY_FONT			:= "<font_7x16.h>"
+TARGET_RECOVERY_INITRC				:= device/samsung/tassve/recovery/recovery.rc
+
+# Kernel config
+TARGET_KERNEL_CONFIG				:= cyanogenmod_tassve_defconfig
+
+# OTA Override
+TARGET_OTA_ASSERT_DEVICE			:= tassve,GT-S5570i,gt-s5570i

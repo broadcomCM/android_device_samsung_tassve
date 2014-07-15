@@ -12,37 +12,40 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+## SAMSUNG_BOOTLOADER is the product model changed into appropriate string parsed by init.
+## Example: -GT-I5500 becomes gt-i5500board, -GT-S5830 becomes gt-s5830board, and so on.
+SAMSUNG_BOOTLOADER := $(shell echo $(PRODUCT_VERSION_DEVICE_SPECIFIC)board | tr '[A-Z]' '[a-z]' | cut -c 2-)
+
+# Ramdisk
+PRODUCT_PACKAGES += \
+	pre_init \
+	pre_adbd \
+    recovery.fstab \
+    init.$(SAMSUNG_BOOTLOADER).rc \
+    init.$(SAMSUNG_BOOTLOADER).bt.rc \
+    init.$(SAMSUNG_BOOTLOADER).fs.rc \
+    init.$(SAMSUNG_BOOTLOADER).gps.rc \
+    init.$(SAMSUNG_BOOTLOADER).sensors.rc \
+    init.$(SAMSUNG_BOOTLOADER).usb.rc \
+    init.$(SAMSUNG_BOOTLOADER).wifi.rc \
+    init.recovery.$(SAMSUNG_BOOTLOADER).rc \
+    ueventd.$(SAMSUNG_BOOTLOADER).rc
+
 # Inherit products
 $(call inherit-product, device/samsung/bcm21553-common/common.mk)
-$(call inherit-product, vendor/samsung/tassve/vendor_blobs.mk)
-
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# This is where we'd set a backup provider if we had one
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
+$(call inherit-product, vendor/samsung/tassve/vendor.mk)
 
 # Add device package overlay
 DEVICE_PACKAGE_OVERLAYS += device/samsung/tassve/overlay
-PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
+# These are the hardware-specific features
+PRODUCT_COPY_FILES += \
+    frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml
+
+# Enable repeatable keys in CWM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.enable_key_repeat=true \
+    ro.cwm.repeatable_keys=114,115
 
 # Add MDPI assets, in addition to LDPI
 PRODUCT_LOCALES += ldpi mdpi
-
-# Discard inherited values and use our own instead.
-PRODUCT_NAME := tassve
-PRODUCT_DEVICE := tassve
-PRODUCT_MODEL := GT-S5570i
-
-# Prebuilt Kernel - DELETE from the package
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/samsung/tassve/prebuilt/kernel
-else
-    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
