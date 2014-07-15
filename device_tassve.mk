@@ -18,8 +18,8 @@ SAMSUNG_BOOTLOADER := $(shell echo $(PRODUCT_VERSION_DEVICE_SPECIFIC)board | tr 
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-	pre_init \
-	pre_adbd \
+    pre_init \
+    pre_adbd \
     recovery.fstab \
     init.$(SAMSUNG_BOOTLOADER).rc \
     init.$(SAMSUNG_BOOTLOADER).bt.rc \
