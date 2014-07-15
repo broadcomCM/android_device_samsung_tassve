@@ -26,4 +26,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_tassve.mk
+    $(LOCAL_DIR)/cyanogen_tassve.mk
